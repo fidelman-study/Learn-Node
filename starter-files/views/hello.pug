@@ -1,7 +1,4 @@
 extends layout
 
 block content
-    - const dogUp = dog.toUpperCase()
-
-    p.name Hello my name is #{name}
-    p.dog(data-dog=`${dog}`) My favourite dog is #{dogUp}
+    h2 Sales end in #{h.moment().endOf('day').fromNow()}
