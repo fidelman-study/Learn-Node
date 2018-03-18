@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    - const dogUp = dog.toUpperCase()
+
+    p.name Hello my name is #{name}
+    p.dog(data-dog=`${dog}`) My favourite dog is #{dogUp}
