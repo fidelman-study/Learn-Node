@@ -24,6 +24,7 @@ storeShema.pre('save', function(next) {
 
     this.slug = slug(this.name);
     next();
+    // to make more resiliant so slug are unique
 });
 
 module.exports = mongoose.model('Store', storeShema);
