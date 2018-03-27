@@ -35,13 +35,19 @@ const storeShema = new mongoose.Schema({
     }
 });
 
-storeShema.pre('save', function(next) {
+storeShema.pre('save', async function(next) {
     if (!this.isModified('name')) {
         next(); // skip
         return;
     }
 
     this.slug = slug(this.name);
+    const slugRexExp = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+    const storeWithSlug = await this.constructor.find({ slug: slugRexExp });
+
+    if (storeWithSlug.length) {
+        this.slug = `${this.slug}-${storeWithSlug.length + 1}`;
+    }
     next();
     // to make more resiliant so slug are unique
 });
