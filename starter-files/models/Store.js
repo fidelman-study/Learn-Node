@@ -52,4 +52,12 @@ storeShema.pre('save', async function(next) {
     // to make more resiliant so slug are unique
 });
 
+storeShema.statics.getTagsList = function() {
+    return this.aggregate([
+        { $unwind: '$tags' }, // inwind by the tags 
+        { $group: { _id: '$tags', count: { $sum: 1 } } }, // group by tags and calculate a sum
+        { $sort: { count: -1 } } //sort by cound ask
+    ]);
+};
+
 module.exports = mongoose.model('Store', storeShema);
