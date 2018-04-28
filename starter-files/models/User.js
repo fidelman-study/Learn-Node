@@ -19,7 +19,9 @@ const userSchema = new Schema({
     type: String,
     required: 'Please suply a name',
     trim: true
-  }
+  },
+  resetPasswordToken: String,
+  resetPasswordExpires: String
 });
 userSchema.virtual('gravatar').get(function() {
   const hash = md5(this.email);
