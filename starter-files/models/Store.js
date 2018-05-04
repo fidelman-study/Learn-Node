@@ -19,6 +19,11 @@ const storeShema = new mongoose.Schema({
         default: Date.now
     },
     photo: String,
+    author: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: 'You must supply an author'
+    },
     location: {
         type: {
             type: String,
