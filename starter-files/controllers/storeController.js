@@ -102,6 +102,10 @@ exports.getStoresByTag = async (req, res) => {
     res.render('tags', { tags, stores, title: 'Tags', activeTag: tag });
 };
 
+exports.mapPage = (req, res) => {
+    res.render('map', { title: 'Map' });
+};
+
 /**
  * API
  */
