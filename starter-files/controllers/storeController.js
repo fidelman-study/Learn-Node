@@ -129,3 +129,24 @@ exports.getStoresByTag = async (req, res) => {
     .limit(5);
     res.json(stores);
  };
+
+ exports.mapStores = async (req, res) => {
+    const coordinates = [req.query.lng, req.query.lat].map(parseFloat);
+
+    const q = {
+        location: {
+            $near: {
+                $geometry: {
+                    type: 'Point',
+                    coordinates
+                },
+                $maxDistance: 10000
+            }
+        }
+    };
+
+    const fields = ['slug', 'name', 'location', 'photo', 'description'].join(' '); // minus ignores
+
+    const stores = await Store.find(q).select(fields).limit(10);
+    res.json(stores);
+ };
