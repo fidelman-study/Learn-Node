@@ -40,6 +40,12 @@ const storeShema = new mongoose.Schema({
     }
 });
 
+// Define our index
+storeShema.index({
+    name: 'text',
+    description: 'text'
+});
+
 storeShema.pre('save', async function(next) {
     if (!this.isModified('name')) {
         next(); // skip
