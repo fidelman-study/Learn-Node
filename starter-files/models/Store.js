@@ -38,6 +38,9 @@ const storeShema = new mongoose.Schema({
             required: 'You must apply an address!'
         }
     }
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
 });
 
 // Define our index
@@ -74,5 +77,12 @@ storeShema.statics.getTagsList = function() {
         { $sort: { count: -1 } } //sort by cound ask
     ]);
 };
+
+// find reviews where the stores _id property === reviews store property
+storeShema.virtual('reviews', {
+    ref: 'Review',          // what model to link?
+    localField: '_id',      // which field on the store?
+    foreignField: 'store'   // which field on the review?
+});
 
 module.exports = mongoose.model('Store', storeShema);

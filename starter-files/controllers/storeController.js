@@ -83,7 +83,7 @@ exports.updateStore = async (req, res) => {
 
 exports.getStoreBySlug = async (req, res, next) => {
     const { params } = req;
-    const store = await Store.findOne({ slug: params.slug }).populate('author');
+    const store = await Store.findOne({ slug: params.slug }).populate('author reviews');
     if (!store) return next(); // pass to the next middleware/not found
     res.render('store', { title: store.name, store });
 };
