@@ -1,5 +1,10 @@
 [![](http://wes.io/kH9O/wowwwwwwwww.jpg)](https://LearnNode.com)
 
+Deployed: 
+- [now](https://dang-thats-delicious-qbvjxiglts.now.sh/)
+
+
+
 # Learn Node Starter Files + Stepped Solutions
 
 These are the starter files and stepped solutions to accompany the LearnNode.com course.
