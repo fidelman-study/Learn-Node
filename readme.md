@@ -2,7 +2,7 @@
 
 Deployed: 
 - [now](https://dang-thats-delicious-qbvjxiglts.now.sh/)
-
+- [heroku](https://now-thats-delicious-fidelman.herokuapp.com/)
 
 
 # Learn Node Starter Files + Stepped Solutions
